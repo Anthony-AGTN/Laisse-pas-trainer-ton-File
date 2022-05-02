@@ -1,0 +1,85 @@
+.form {
+    margin: 5vh auto;
+    width: 500px;
+}
+
+.form-input {
+    margin: 2vh;
+}
+
+.driver-card {
+    margin: auto;
+    border-style: solid;
+    width: 500px;
+}
+
+h1 {
+    margin: auto;
+    text-align: center;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    color: white;
+    background-color: #92d2e7;
+}
+
+h2 {
+    width: 90%;
+    margin: auto auto auto 0px;
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+    color: white;
+    background-color: #92d2e7;
+}
+
+.first-information ul {
+    display: flex;
+    margin: 0px;
+    padding-inline-start: 0px;
+    justify-content: space-around;
+}
+
+.first-information ul li {
+    list-style-type: none;
+}
+
+.first-information ul li p {
+    text-align: center;
+    margin: 1vh;
+}
+
+.general-information {
+    display: flex;
+}
+
+.general-information img {
+    border-style: solid;
+    margin: 1vh 2vh 1vh 3vh;
+    width: 120px;
+    height: 170px;
+}
+
+.infomation-right {
+    width: 100%;
+}
+
+.second-information ul {
+    display: flex;
+    padding-inline-start: 0px;
+    justify-content: flex-start;
+    gap: 2vh;
+}
+
+.second-information ul li {
+    list-style-type: none;
+}
+
+.second-information ul li p {
+    text-align: center;
+    margin: 0px;
+}
+
+.sign {
+    padding-right: 5vh;
+    text-align: end;
+}
