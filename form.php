@@ -1,4 +1,9 @@
 <?php
+
+$firstName = 'xxxxxxxxx';
+$lastName = 'xxxxxxxxx';
+$age = 'XX';
+
 // Je vérifie si le formulaire est soumis comme d'habitude
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     // Securité en php
@@ -29,7 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     // on déplace le fichier temporaire vers le nouvel emplacement sur le serveur. Ça y est, le fichier est uploadé
     move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadFile);
+
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $age = $_POST['age'];
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -68,8 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         </form>
     </div>
 
-    <?php echo var_dump($_POST); ?>
-
     <!-- Drivers License -->
 
     <div class="driver-card">
@@ -101,8 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             <div class="infomation-right">
                 <div class="address">
                     <h2>DRIVERS LICENSE</h2>
-                    <p><?= $_POST['firstName'] ?> <?= $_POST['lastName'] ?></p>
-                    <p><?= $_POST['age'] ?> OLD PLUMTREE BLVD</p>
+                    <p><?= $firstName ?> <?= $lastName ?></p>
+                    <p><?= $age ?> OLD PLUMTREE BLVD</p>
                     <p>SPRINGFIELD, IL 62701</p>
                 </div>
                 <div class="second-information">
