@@ -3,6 +3,7 @@
 $firstName = 'xxxxxxxxx';
 $lastName = 'xxxxxxxxx';
 $age = 'XX';
+$photo = 'public/uploads/avatar.png';
 
 // Je vérifie si le formulaire est soumis comme d'habitude
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -30,6 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $errors[] = "Votre fichier doit faire moins de 1M !";
     }
 
+    /****** on ajoute un uniqid au nom de l'image *************/
+    $explodeName = explode('.', basename($_FILES['avatar']['name']));
+    $name = $explodeName[0];
+    $extension = $explodeName[1];
+    $uniqName = $name . uniqid('', true) . "." . $extension;
+    $uploadFile = $uploadDir . $uniqName;
+
     /****** Si je n'ai pas d"erreur alors j'upload *************/
 
     // on déplace le fichier temporaire vers le nouvel emplacement sur le serveur. Ça y est, le fichier est uploadé
@@ -38,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $age = $_POST['age'];
+    $photo = $uploadFile;
 }
 
 ?>
@@ -105,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             </ul>
         </div>
         <div class="general-information">
-            <img src="public/uploads/photo13.jpg" alt="photo de profil">
+            <img src="<?= $photo ?>" alt="photo de profil">
             <div class="infomation-right">
                 <div class="address">
                     <h2>DRIVERS LICENSE</h2>
@@ -137,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                         </li>
                     </ul>
                 </div>
-                <p class="sign">HOMER SIMPSON</p>
+                <p class="sign"><?= $firstName ?> <?= $lastName ?></p>
             </div>
         </div>
     </div>
