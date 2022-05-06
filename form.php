@@ -3,11 +3,16 @@
 $firstName = 'xxxxxxxxx';
 $lastName = 'xxxxxxxxx';
 $age = 'XX';
-$photo = 'public/uploads/avatar.png';
+$photo = 'public/asset/avatar.png';
 $displayErrors = '';
 
 // Je vérifie si le formulaire est soumis comme d'habitude
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+
+    /* Supprimer les fichiers chargés */
+    if (!empty($_POST['delete'])) {
+        array_map('unlink', glob("public/uploads/*"));;
+    }
 
     if (!empty($_POST['firstName'])) {
         $firstName = $_POST['firstName'];
@@ -114,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     <div class="form">
         <form action="" method="post">
             <div class="form-input">
-                <button name="delete" value="1">Delete</button>
+                <button name="delete" value="1">Delete uploaded files</button>
             </div>
         </form>
     </div>
