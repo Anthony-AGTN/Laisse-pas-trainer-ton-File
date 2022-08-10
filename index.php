@@ -35,12 +35,21 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
         // Les extensions autorisées (jpg, png, gif, webp)
         $authorizedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        // Je récupère le type mime du fichier
+        $typeMime = mime_content_type($_FILES['avatar']['tmp_name']);
+        // Les types mime autorisées (image/jpeg, png, gif, image/webp)
+        $authorizedTypeMime = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
         // Le poids max géré par PHP par défaut est de 2M, dans notre cas, nous sommes à 1M
         $maxFileSize = 1000000;
 
         /****** Si l'extension est autorisée *************/
         if ((!in_array($extension, $authorizedExtensions))) {
             $errors[] = 'Veuillez sélectionner une image de type Jpg ou Jpeg ou Png !';
+        }
+
+        /****** Si le type mime est autorisée *************/
+        if ((!in_array($typeMime, $authorizedTypeMime))) {
+            $errors[] = 'Le fichier est de type "' . $typeMime . '", veuillez sélectionner une image de type Jpg ou Jpeg ou Png !';
         }
 
         /****** On vérifie si l'image existe et si le poids est autorisé en octets *************/
